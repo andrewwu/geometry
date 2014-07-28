@@ -20,4 +20,12 @@ ActiveRecord::Schema.define(version: 20140728042133) do
   end
 
   add_index "manufacturers", ["name"], name: "index_manufacturers_on_name", unique: true
+
+  create_table "models", force: true do |t|
+    t.integer  "year"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
