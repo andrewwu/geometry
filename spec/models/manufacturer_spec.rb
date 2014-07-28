@@ -10,6 +10,8 @@ RSpec.describe Manufacturer, :type => :model do
 
   it { should respond_to(:name) }
 
+  it { should be_valid }
+
   describe "when name is already taken" do
     before do
       manufacturer_with_same_name = @manufacturer.dup
