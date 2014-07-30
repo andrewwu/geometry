@@ -49,7 +49,7 @@ RSpec.describe Size, :type => :model do
     end
   end
 
-  Size::ATTRIBUTES.each do |attribute|
+  Size::GEOMETRY_ATTRIBUTES.each do |attribute|
     describe "when #{attribute} less than or equal to zero" do
       it "should be invalid" do
         values = ["foobar", -88, 0]
