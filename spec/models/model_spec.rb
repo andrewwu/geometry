@@ -20,7 +20,7 @@ RSpec.describe Model, :type => :model do
 
   describe "when year is invalid" do
     it "should be invalid" do
-      years = [0, 12, 747, 1800, 10500, 1.year.from_now + 2]
+      years = ["eight", 0, 12, 747, 1800, 10500, 1.year.from_now + 2]
       years.each do |invalid_year|
         @model.year = invalid_year
         expect(@model).to be_invalid
