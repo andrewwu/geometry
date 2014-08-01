@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Model, :type => :model do
 
   before do
-    @model = Model.new(year: "2014", name: "SLR01")
+    @model = Model.new(year: "2014", name: "SLR01",
+                        manufacturer: create(:manufacturer))
   end
 
   subject { @model }
@@ -45,6 +46,16 @@ RSpec.describe Model, :type => :model do
 
   describe "when name is too long" do
     before { @model.name = "a" * 21 }
+    it { should be_invalid }
+  end
+
+  describe "when manufacturer is blank" do
+    before { @model.manufacturer = nil }
+    it { should be_invalid }
+  end
+
+  describe "when manufacturer is invalid" do
+    before { @model.manufacturer = Manufacturer.new }
     it { should be_invalid }
   end
 end
