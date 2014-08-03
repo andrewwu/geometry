@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140801051011) do
+ActiveRecord::Schema.define(version: 20140803061631) do
 
   create_table "manufacturers", force: true do |t|
     t.string   "name"
@@ -40,20 +40,20 @@ ActiveRecord::Schema.define(version: 20140801051011) do
 
   create_table "sizes", force: true do |t|
     t.float    "frame_size"
-    t.integer  "top_tube"
-    t.integer  "head_tube"
+    t.float    "top_tube"
+    t.float    "head_tube"
     t.float    "head_tube_angle"
-    t.integer  "seat_tube"
+    t.float    "seat_tube"
     t.float    "seat_tube_angle"
-    t.integer  "bottom_bracket_drop"
-    t.integer  "front_center"
-    t.integer  "chainstay"
-    t.integer  "fork_rake"
-    t.integer  "trail"
-    t.integer  "wheelbase"
-    t.integer  "standover"
-    t.integer  "stack"
-    t.integer  "reach"
+    t.float    "bottom_bracket_drop"
+    t.float    "front_center"
+    t.float    "chainstay"
+    t.float    "fork_rake"
+    t.float    "trail"
+    t.float    "wheelbase"
+    t.float    "standover"
+    t.float    "stack"
+    t.float    "reach"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
