@@ -29,4 +29,16 @@ RSpec.describe Manufacturer, :type => :model do
     before { @manufacturer.name = "a" * 31 }
     it { should be_invalid }
   end
+
+  describe "model associations" do
+    let(:model) { create(:model, manufacturer: @manufacturer) }
+
+    specify { expect(@manufacturer.models).to include(model) }
+
+    it "destroys the associated models" do
+      models = @manufacturer.models
+      @manufacturer.destroy
+      expect(models).to be_empty
+    end
+  end
 end
