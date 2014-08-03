@@ -58,4 +58,25 @@ RSpec.describe Model, :type => :model do
     before { @model.manufacturer = Manufacturer.new }
     it { should be_invalid }
   end
+
+  describe "sizes" do
+    let(:size) { create(:size) }
+
+    before do
+      @model.save
+      @model.sizes << size
+    end
+
+    describe "assigning a size" do
+      specify { expect(@model.sizes.count).to eq 1 }
+    end
+
+    describe "assigning a duplicate size" do
+      it "raises an error" do
+        expect {
+          @model.sizes << size
+        }.to raise_error(ActiveRecord::RecordNotUnique)
+      end
+    end
+  end
 end

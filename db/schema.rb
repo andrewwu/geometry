@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731044311) do
+ActiveRecord::Schema.define(version: 20140801051011) do
 
   create_table "manufacturers", force: true do |t|
     t.string   "name"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20140731044311) do
     t.datetime "updated_at"
     t.integer  "manufacturer_id"
   end
+
+  create_table "models_sizes", id: false, force: true do |t|
+    t.integer "model_id"
+    t.integer "size_id"
+  end
+
+  add_index "models_sizes", ["model_id", "size_id"], name: "index_models_sizes_on_model_id_and_size_id", unique: true
+  add_index "models_sizes", ["model_id"], name: "index_models_sizes_on_model_id"
+  add_index "models_sizes", ["size_id"], name: "index_models_sizes_on_size_id"
 
   create_table "sizes", force: true do |t|
     t.float    "frame_size"

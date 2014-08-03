@@ -1,4 +1,5 @@
 class Model < ActiveRecord::Base
+  has_and_belongs_to_many :sizes, -> { uniq }
   belongs_to :manufacturer
 
   validates :year, presence: true,
