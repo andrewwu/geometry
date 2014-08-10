@@ -1,2 +1,23 @@
-%h1 StaticPages#help
-%p Find me in app/views/static_pages/home.html.haml
+.container
+  .row
+    .col-md-12
+      %h1.text-center The quickest, easiest way to compare bike geometries
+
+  .row
+    .col-md-12
+      %h2 Select a bike
+      .well
+        = form_tag nil do
+          %div
+            = select_tag :year, options_for_select(Model.pluck(:year).uniq.sort), prompt: 'Year'
+
+          %div
+            = select_tag :manufacturer_id, options_for_select(Manufacturer.order(:name).map { |manu| [manu.name, { 'data-years' => "#{manu.models.pluck(:year).uniq}" }] }), prompt: 'Manufacturer'
+
+          %div
+            = select_tag :model_id, grouped_options_for_select(Manufacturer.order(:name).map { |manu| [manu.name, manu.models.map { |m| [m.name, m.id, { 'data-year' => m.year }]}]}), prompt: 'Model'
+
+          %div
+            = select_tag :size_id, grouped_options_for_select(Model.order(:name).map { |mod| ["#{mod.year} #{mod.manufacturer.name} #{mod.name}", mod.sizes.map { |size| ["%g" % size.frame_size, size.id]}]}), prompt: 'Size'
+          %div
+            = submit_tag "Add"
