@@ -9,4 +9,8 @@ class Model < ActiveRecord::Base
             }
   validates :name, presence: true, length: { maximum: 20 }
   validates :manufacturer, presence: true, associated: true
+
+  def full_name
+    "#{year} #{manufacturer.name} #{name}"
+  end
 end

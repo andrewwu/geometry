@@ -21,3 +21,29 @@
             = select_tag :size_id, grouped_options_for_select(Model.order(:name).map { |mod| ["#{mod.year} #{mod.manufacturer.name} #{mod.name}", mod.sizes.map { |size| ["%g" % size.frame_size, size.id]}]}), prompt: 'Size'
           %div
             = submit_tag "Add"
+
+.container
+  %h1 Geometry Comparison
+
+  .row
+    .col-md-12
+      %table.table.table-striped
+        %thead
+          %tr
+            %th &nbsp;
+            %th Size
+            - Size::GEOMETRY_ATTRIBUTES.each do |attribute|
+              %th= attribute.humanize
+        %tbody
+          - @models.each do |model|
+            - model.sizes.each do |size|
+              %tr
+                %td
+                  %strong= model.full_name
+                %td= format_size_attribute(size.frame_size)
+                - Size::GEOMETRY_ATTRIBUTES.each do |attribute|
+                  %td= format_size_attribute(size.send(attribute), attribute)
+
+  .row
+    .col-md-12
+      %small *Lengths displayed in mm
