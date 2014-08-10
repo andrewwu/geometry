@@ -9,16 +9,16 @@
       .well
         = form_tag nil do
           %div
-            = select_tag :year, options_for_select(Model.pluck(:year).uniq.sort), prompt: 'Year'
+            = select_tag :year, options_for_year, prompt: 'Year'
 
           %div
-            = select_tag :manufacturer_id, options_for_select(Manufacturer.order(:name).map { |manu| [manu.name, { 'data-years' => "#{manu.models.pluck(:year).uniq}" }] }), prompt: 'Manufacturer'
+            = select_tag :manufacturer_id, options_for_manufacturer, prompt: 'Manufacturer'
 
           %div
-            = select_tag :model_id, grouped_options_for_select(Manufacturer.order(:name).map { |manu| [manu.name, manu.models.map { |m| [m.name, m.id, { 'data-year' => m.year }]}]}), prompt: 'Model'
+            = select_tag :model_id, grouped_options_for_model, prompt: 'Model'
 
           %div
-            = select_tag :size_id, grouped_options_for_select(Model.order(:name).map { |mod| ["#{mod.year} #{mod.manufacturer.name} #{mod.name}", mod.sizes.map { |size| ["%g" % size.frame_size, size.id]}]}), prompt: 'Size'
+            = select_tag :size_id, grouped_options_for_size, prompt: 'Size'
           %div
             = submit_tag "Add"
 
