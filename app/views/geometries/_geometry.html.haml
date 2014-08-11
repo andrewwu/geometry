@@ -1,0 +1,6 @@
+%tr
+  %td
+    %strong= model.full_name
+  %td= format_size_attribute(size.frame_size)
+  - Size::GEOMETRY_ATTRIBUTES.each do |attribute|
+    %td= format_size_attribute(size.send(attribute), attribute)

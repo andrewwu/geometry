@@ -7,7 +7,7 @@
     .col-md-12
       %h2 Select a bike
       .well
-        = form_tag nil do
+        = form_tag geometries_path, remote: true do
           %div
             = select_tag :year, options_for_year, prompt: 'Year'
 
@@ -37,12 +37,7 @@
         %tbody
           - @models.each do |model|
             - model.sizes.each do |size|
-              %tr
-                %td
-                  %strong= model.full_name
-                %td= format_size_attribute(size.frame_size)
-                - Size::GEOMETRY_ATTRIBUTES.each do |attribute|
-                  %td= format_size_attribute(size.send(attribute), attribute)
+              = render 'geometries/geometry', model: model, size: size
 
   .row
     .col-md-12

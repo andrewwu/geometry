@@ -13,4 +13,10 @@ class Model < ActiveRecord::Base
   def full_name
     "#{year} #{manufacturer.name} #{name}"
   end
+
+  def self.find_by_id_and_size_id(model_id, size_id)
+    includes(:sizes).where(
+      id: model_id,
+      sizes: { id: size_id }).first
+  end
 end
