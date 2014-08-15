@@ -60,4 +60,42 @@ RSpec.describe Size, :type => :model do
       end
     end
   end
+
+  describe "persistence" do
+    before do
+      @size.save
+      @size.update_attributes(
+        frame_size: 49,
+        top_tube: 518,
+        head_tube: 100,
+        head_tube_angle: 72.25,
+        seat_tube: 431,
+        seat_tube_angle: 75.5,
+        bottom_bracket_drop: 71.5,
+        front_center: 576,
+        chainstay: 405,
+        fork_rake: 45,
+        trail: 62,
+        wheelbase: 970,
+        standover: 730,
+        stack: 504,
+        reach: 386
+      )
+    end
+
+    context "when size doesn't exist" do
+    it "should be valid" do
+      duplicate_size = @size.dup
+      duplicate_size.reach = 350
+      expect(duplicate_size).to be_valid
+    end
+    end
+
+    context "when size already exists" do
+      it "should be invalid" do
+        duplicate_size = @size.dup
+        expect(duplicate_size).to be_invalid
+      end
+    end
+  end
 end
