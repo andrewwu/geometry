@@ -44,6 +44,7 @@ end
 gem 'haml-rails', '~> 0.5.3'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'figaro'
 
 group :development, :test do
   gem 'sqlite3'

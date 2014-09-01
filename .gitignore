@@ -36,3 +36,6 @@ doc/
 .idea
 .ruby-*
 .secret
+
+# Ignore application configuration
+/config/application.yml
