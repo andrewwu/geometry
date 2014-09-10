@@ -1,2 +1,40 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+h1 {
+  margin: 10px 0;
+}
+
+.select-a-bike {
+  background: #7A8489;
+
+  h2 {
+    color: white;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .select-a-bike {
+    padding-bottom: 20px;
+
+    #year_id {
+      width: 100px;
+    }
+
+    #manufacturer_id {
+      width: 150px;
+    }
+
+    #model_id {
+      width: 150px;
+    }
+
+    #size_id {
+      width: 75px;
+    }
+
+    input[type="submit"] {
+      margin-top: 10px;
+    }
+  }
+}
