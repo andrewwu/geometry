@@ -1,4 +1,4 @@
-%tr
+%tr{:data => {:model_id => model.id, :size_id => size.id}}
   %td
     %strong= model.full_name
   %td= format_size_attribute(size.frame_size)

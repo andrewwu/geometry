@@ -47,6 +47,13 @@ jQuery ->
   disable_models(true)
   disable_sizes(true)
 
+  $('input[type="submit"]').click ->
+    model_id = $('#model_id').val()
+    size_id = $('#size_id').val()
+    if $("tr[data-model-id='#{model_id}'][data-size-id='#{size_id}']").length
+      # already added, show error
+      return false
+
   $('#year').change ->
     year = $('#year :selected').text()
 
