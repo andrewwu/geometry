@@ -53,6 +53,8 @@ jQuery ->
     if $("tr[data-model-id='#{model_id}'][data-size-id='#{size_id}']").length
       # already added, show error
       return false
+    else
+      $('.getting-started').hide()
 
   $('#year').change ->
     year = $('#year :selected').text()

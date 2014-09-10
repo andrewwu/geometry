@@ -40,12 +40,8 @@
               - Size::GEOMETRY_ATTRIBUTES.each do |attribute|
                 %th= attribute.humanize
           %tbody
-          /
-            - @models.each do |model|
-              - model.sizes.each do |size|
-                = render 'geometries/geometry', model: model, size: size
 
-  .row
+  .row.getting-started
     .col-md-4.col-md-offset-4
       .alert.alert-info.text-center Add a bike to get started
 
