@@ -26,6 +26,12 @@
                 .form-group
                   = submit_tag "Add", class: 'btn btn-large btn-success'
 
+            .row.help
+              .col-md-12
+                %p
+                  Can't find your bike?
+                  = mail_to "hello@bikometry.com", "Let us know!"
+
 .container
   %h2.text-center Geometry Comparison
 

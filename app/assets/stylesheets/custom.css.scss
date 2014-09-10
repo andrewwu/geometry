@@ -13,10 +13,16 @@ h1 {
   }
 }
 
+.help p {
+  color: white;
+
+  a {
+    color: #D9EDF7;
+  }
+}
+
 @media (min-width: $screen-sm-min) {
   .select-a-bike {
-    padding-bottom: 20px;
-
     #year_id {
       width: 100px;
     }
@@ -34,6 +40,10 @@ h1 {
     }
 
     input[type="submit"] {
+      margin-top: 10px;
+    }
+
+    .help p {
       margin-top: 10px;
     }
   }
